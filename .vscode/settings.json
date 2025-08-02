@@ -1,0 +1,78 @@
+{
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/page.tsx": "${dirname} - page.tsx",
+    "**/app/**/layout.tsx": "${dirname} - layout.tsx"
+  },
+  "diffEditor.diffAlgorithm": "advanced",
+  "diffEditor.experimental.showMoves": true,
+  "typescript.preferences.autoImportFileExcludePatterns": ["@radix-ui/*"],
+  "window.newWindowDimensions": "maximized",
+  "workbench.colorTheme": "Aura Dark",
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.fontSize": 16,
+  "editor.fontLigatures": false,
+  "editor.fontFamily": "JetBrains Mono, Consolas, 'Courier New', monospace",
+  "editor.lineHeight": 22,
+  "editor.fontWeight": "300",
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.autoSave": "onFocusChange",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.suggestSelection": "first",
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "explorer.confirmDragAndDrop": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.tabSize": 2,
+  "editor.accessibilitySupport": "off",
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "*.scss": "postcss"
+  },
+  "editor.guides.bracketPairs": true,
+  "update.showReleaseNotes": false,
+  "explorer.confirmDelete": false,
+  "extensions.ignoreRecommendations": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["(?:twMerge|twJoin|clsx|cn)\\(([^;]*)[\\);]", "[`'\"`]([^'\"`;]*)[`'\"`]"]
+  ],
+  "tailwindCSS.validate": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.minimap.enabled": false,
+  "editor.hideCursorInOverviewRuler": true,
+  "breadcrumbs.filePath": "last",
+  "workbench.sideBar.location": "right",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "explorer.compactFolders": false,
+  "remote.autoForwardPortsSource": "hybrid",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.activityBar.orientation": "vertical",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontFamily": "JetBrains Mono",
+  "cursor.chat.terminalShowHoverHint": false,
+  "update.releaseTrack": "prerelease",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.externalBrowser": "chrome",
+  "workbench.iconTheme": "catppuccin-latte"
+}
