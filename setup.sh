@@ -1,6 +1,7 @@
 #!/bin/sh
+set -e
 
-NODE_VER=22.17.0
+NODE_VER=24.11.0
 
 # prompt for git name and email
 echo "Git name:"
@@ -8,39 +9,24 @@ read gitname
 echo "Git email:"
 read gitemail
 
-# install github cli, zsh, wget, curl
-(type -p wget >/dev/null || (sudo apt update && sudo apt install zsh wget curl -y)) \
-	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
-	&& out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-	&& cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
-	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-	&& sudo apt update \
-	&& sudo apt install gh -y
-
-# setup git
-git config --global user.email "$gitemail"
-git config --global user.name "$gitname"
-
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://install.ohmyz.sh/)"
-
-# install asdf
-mkdir -p ~/.asdf
-wget https://github.com/asdf-vm/asdf/releases/download/v0.18.0/asdf-v0.18.0-linux-x86_64.tar.gz -O asdf.tar.gz
-tar -xzf asdf.tar.gz -C ~/.asdf
-rm asdf.tar.gz
-
-# copy zshrc
+# copy zshrc and starship config
 cp .zshrc ~/.zshrc
+mkdir -p ~/.config
+cp .config/starship.toml ~/.config/starship.toml
 
 # change default shell to zsh
 chsh -s $(which zsh)
 
-# source asdf for current session
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
+# install tools
+sudo apt-get install -y build-essential procps curl file git openssh-server
+echo "$USER ALL=(ALL) NOPASSWD: /usr/sbin/service ssh start" | sudo tee /etc/sudoers.d/ssh-start
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew install fd fzf ripgrep ast-grep jq gh asdf postgresql@17 planetscale/tap/pscale tailscale starship
+
+# setup git
+git config --global user.email "$gitemail"
+git config --global user.name "$gitname"
 
 # setup node within asdf
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
@@ -56,6 +42,9 @@ asdf reshim nodejs
 # setup bun
 curl -fsSL https://bun.sh/install | bash
 
-# install claude
+# setup claude
 curl -fsSL claude.ai/install.sh | bash
 cp -r .claude ~/
+
+# start tailscale
+sudo tailscale up

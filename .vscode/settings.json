@@ -1,11 +1,4 @@
 {
-  "workbench.editor.customLabels.patterns": {
-    "**/app/**/page.tsx": "${dirname} - page.tsx",
-    "**/app/**/layout.tsx": "${dirname} - layout.tsx"
-  },
-  "diffEditor.diffAlgorithm": "advanced",
-  "diffEditor.experimental.showMoves": true,
-  "typescript.preferences.autoImportFileExcludePatterns": ["@radix-ui/*"],
   "window.newWindowDimensions": "maximized",
   "workbench.colorTheme": "Aura Dark",
   "security.workspace.trust.untrustedFiles": "open",
@@ -61,6 +54,7 @@
   "editor.hideCursorInOverviewRuler": true,
   "breadcrumbs.filePath": "last",
   "workbench.sideBar.location": "right",
+  "workbench.iconTheme": "catppuccin-latte",
   "window.commandCenter": false,
   "workbench.layoutControl.enabled": false,
   "explorer.compactFolders": false,
@@ -70,9 +64,14 @@
   "workbench.activityBar.orientation": "vertical",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.fontFamily": "JetBrains Mono",
-  "cursor.chat.terminalShowHoverHint": false,
   "update.releaseTrack": "prerelease",
   "diffEditor.ignoreTrimWhitespace": false,
   "workbench.externalBrowser": "chrome",
-  "workbench.iconTheme": "catppuccin-latte"
+  "workbench.enableExperiments": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editorAssociations": {
+    "*.svg": "default"
+  },
+  "claudeCode.preferredLocation": "panel",
+  "typescript.experimental.useTsgo": false
 }

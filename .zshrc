@@ -1,5 +1,14 @@
-export COLORTERM=truecolor
+# start SSH server if not running
+if ! pgrep -x "sshd" > /dev/null; then
+    sudo service ssh start > /dev/null 2>&1
+fi
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export COLORTERM=truecolor
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 export PATH="$HOME/.bin:$PATH"
 
 # WSL
@@ -9,20 +18,14 @@ alias explorer="explorer.exe ."
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
-# oh-my-zsh
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="fino"
-zstyle ':omz:update' mode auto
-plugins=(git asdf docker docker-compose)
-source $ZSH/oh-my-zsh.sh
+# homebrew
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_ANALYTICS=1
 
-# bun 
-[ -s "/home/kyle/.bun/_bun" ] && source "/home/kyle/.bun/_bun"
+# starship prompt
+eval "$(starship init zsh)"
+
+# bun
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Turso
-export PATH="/home/kyle/.turso:$PATH"
-
-# Claude
-alias claude="/home/kyle/.claude/local/claude"
