@@ -1,0 +1,23 @@
+theme = Aura
+font-family = JetBrains Mono
+maximize = true
+auto-update-channel = tip
+unfocused-split-opacity = 0.97
+
+# newlines
+keybind = shift+enter=text:\n
+
+# split pane
+keybind = ctrl+shift+w=new_split:up
+keybind = ctrl+shift+a=new_split:left
+keybind = ctrl+shift+s=new_split:down
+keybind = ctrl+shift+d=new_split:right
+
+# pane navigation
+keybind = opt+w=goto_split:up
+keybind = opt+a=goto_split:left
+keybind = opt+s=goto_split:down
+keybind = opt+d=goto_split:right
+
+# close pane
+keybind = opt+q=close_surface

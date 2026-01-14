@@ -3,6 +3,15 @@ set -e
 
 NODE_VER=24.11.0
 
+# detect OS
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    OS="wsl"
+elif [ "$(uname -s)" = "Darwin" ]; then
+    OS="macos"
+else
+    OS="linux"
+fi
+
 # prompt for git name and email
 echo "Git name:"
 read gitname
@@ -13,6 +22,15 @@ read gitemail
 cp .zshrc ~/.zshrc
 mkdir -p ~/.config
 cp .config/starship.toml ~/.config/starship.toml
+
+# copy terminal config based on OS
+if [ "$OS" = "wsl" ]; then
+    WIN_USER=$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')
+    cp .config/.wezterm.lua "/mnt/c/Users/$WIN_USER/.wezterm.lua"
+elif [ "$OS" = "macos" ]; then
+    mkdir -p ~/.config/ghostty
+    cp .config/ghostty ~/.config/ghostty/config
+fi
 
 # change default shell to zsh
 chsh -s $(which zsh)
@@ -25,8 +43,9 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install fd fzf ripgrep ast-grep jq gh asdf postgresql@17 planetscale/tap/pscale tailscale starship
 
 # setup git
-git config --global user.email "$gitemail"
-git config --global user.name "$gitname"
+mkdir -p ~/.config/git
+sed -e "s/__GIT_NAME__/$gitname/" -e "s/__GIT_EMAIL__/$gitemail/" .config/git/gitconfig > ~/.config/git/config
+cp .config/git/ignore ~/.config/git/ignore
 
 # setup node within asdf
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git

@@ -6,6 +6,8 @@
   - `pnpm-lock.yaml` - use pnpm
   - `package-lock.json` - use npm
 - When dealing with npm package versions, use the package manager to find the latest: `[bun pm|pnpm|npm] view <package> version`
+- Never compromise type safety: No any, no non-null assertion operator (!), no type assertions (as Type)
+- Make illegal states unrepresentable: Model domain with ADTs/discriminated unions; parse inputs at boundaries into typed structures; if state can't exist, code can't mishandle it
 
 ## Bash
 
@@ -27,9 +29,10 @@ Avoid AI generated slop such as:
 - Redundant checks/casts inside a function that the caller also already takes care of.
 - Any other style that is inconsistent with the file, including using types when the file doesn't.
 
-## Comment Policy
+This codebase will outlive you. Every shortcut becomes someone else's burden. Every hack compounds into technical debt that shows the whole team down.
+The patterns you establish will be copied. The corners you cut will be cut again. Leave the codebase better than you found it.
 
-### Unacceptable Comments
+Avoid slop comments such as:
 
 - Comments that repeat what code codes
 - Commented out code (delete it)
