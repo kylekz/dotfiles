@@ -1,9 +1,11 @@
 ## TypeScript
 
-- Look for which package manager to use instead of defaulting to npm. If the root contains:
+- Before running any package manager commands, check the `packageManager` field in the `package.json`
+- If there's no `packageManager` field, fallback to checking lockfiles:
   - `bun.lock` - use bun
   - `pnpm-lock.yaml` - use pnpm
   - `package-lock.json` - use npm
+- When dealing with npm package versions, use the package manager to find the latest: `[bun pm|pnpm|npm] view <package> version`
 
 ## Bash
 
