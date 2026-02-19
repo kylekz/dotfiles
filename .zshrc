@@ -14,6 +14,9 @@ SAVEHIST=10000
 setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 export PATH="$HOME/.local/bin:$HOME/.bin:$PATH"
 
+# completions
+autoload -Uz compinit && compinit
+
 # asdf
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
@@ -22,15 +25,13 @@ export PATH="$ASDF_DATA_DIR/shims:$PATH"
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_ANALYTICS=1
 
-# wsl only
 if [[ "$OS" == "wsl" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
   # start SSH server if not running
   if ! pgrep -x "sshd" > /dev/null; then
     sudo service ssh start > /dev/null 2>&1
   fi
-
-  # load homebrew
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
   # fix wezterm pane splitting dir
   __wezterm_osc7() {
@@ -39,9 +40,13 @@ if [[ "$OS" == "wsl" ]]; then
   chpwd_functions+=(__wezterm_osc7)
   precmd_functions+=(__wezterm_osc7)
 
-  # open current dir in windows explorer
   alias explorer="explorer.exe ."
+elif [[ "$OS" == "macos" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# fzf
+source <(fzf --zsh)
 
 # starship prompt
 eval "$(starship init zsh)"

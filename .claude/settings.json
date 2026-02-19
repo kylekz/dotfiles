@@ -1,6 +1,13 @@
 {
   "permissions": {
     "defaultMode": "acceptEdits",
+    "allow": [
+      "Bash(fd:*)",
+      "Bash(fzf:*)",
+      "Bash(rg:*)",
+      "Bash(ast-grep:*)",
+      "Bash(jq:*)"
+    ],
     "ask": ["Bash(rm:*)"]
   },
   "cleanupPeriodDays": 365,
@@ -8,10 +15,8 @@
     "ENABLE_TOOL_SEARCH": "true",
     "ENABLE_LSP_TOOL": "true",
     "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "0",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4-6[1m]",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-6[1m]",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-6[1m]",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4-6[1m]"
   },
   "includeCoAuthoredBy": false,
   "enabledPlugins": {
