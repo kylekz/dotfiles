@@ -57,6 +57,11 @@ brew install fd fzf ripgrep ast-grep jq gh asdf postgresql@17 planetscale/tap/ps
 mkdir -p ~/.config/git
 sed -e "s/__GIT_NAME__/$gitname/" -e "s/__GIT_EMAIL__/$gitemail/" .config/git/gitconfig > ~/.config/git/config
 ln -sf "$DOTFILES/.config/git/ignore" ~/.config/git/ignore
+# remove legacy gitconfig so XDG config takes precedence
+if [ -f "$HOME/.gitconfig" ]; then
+    mv "$HOME/.gitconfig" "$HOME/.gitconfig.bak"
+    echo "Moved legacy ~/.gitconfig to ~/.gitconfig.bak"
+fi
 
 # setup node within asdf
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git 2>/dev/null || true
@@ -78,8 +83,9 @@ mkdir -p ~/.claude
 ln -sf "$DOTFILES/.claude/CLAUDE.md" ~/.claude/CLAUDE.md
 ln -sf "$DOTFILES/.claude/settings.json" ~/.claude/settings.json
 ln -sf "$DOTFILES/.claude/statusline-command.sh" ~/.claude/statusline-command.sh
-cp -r "$DOTFILES/.claude/agents" ~/.claude/
-cp -r "$DOTFILES/.claude/commands" ~/.claude/
+rm -rf ~/.claude/agents ~/.claude/commands
+ln -sf "$DOTFILES/.claude/agents" ~/.claude/agents
+ln -sf "$DOTFILES/.claude/commands" ~/.claude/commands
 
 # start tailscale
 sudo tailscale up

@@ -43,6 +43,7 @@ if [[ "$OS" == "wsl" ]]; then
   alias explorer="explorer.exe ."
 elif [[ "$OS" == "macos" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+  [[ -f "$HOME/.orbstack/shell/init.zsh" ]] && source "$HOME/.orbstack/shell/init.zsh"
 fi
 
 # fzf
