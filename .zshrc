@@ -16,6 +16,7 @@ export PATH="$HOME/.local/bin:$HOME/.bin:$PATH"
 
 # completions
 autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # asdf
 export ASDF_DATA_DIR="$HOME/.asdf"
