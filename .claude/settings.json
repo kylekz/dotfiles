@@ -1,24 +1,25 @@
 {
   "permissions": {
+    "autoUpdatesChannel": "latest",
     "defaultMode": "acceptEdits",
     "allow": [
-      "Bash(fd:*)",
-      "Bash(fzf:*)",
-      "Bash(rg:*)",
-      "Bash(ast-grep:*)",
-      "Bash(jq:*)"
+      "Bash(fd *)",
+      "Bash(fzf *)",
+      "Bash(rg *)",
+      "Bash(ast-grep *)",
+      "Bash(jq *)"
     ],
-    "ask": ["Bash(rm:*)"]
+    "ask": ["Bash(rm *)"]
   },
-  "cleanupPeriodDays": 365,
+  "showThinkingSummaries": true,
+  "cleanupPeriodDays": 9999,
   "env": {
     "ENABLE_TOOL_SEARCH": "true",
     "ENABLE_LSP_TOOL": "true",
-    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "0",
+    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4-6[1m]"
   },
-  "includeCoAuthoredBy": false,
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true
   },
