@@ -12,6 +12,7 @@
   },
   "autoUpdatesChannel": "latest",
   "showThinkingSummaries": true,
+  "showClearContextOnPlanAccept": true,
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "cleanupPeriodDays": 9999,
