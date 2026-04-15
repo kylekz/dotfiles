@@ -1,20 +1,4 @@
 {
-  "permissions": {
-    "defaultMode": "acceptEdits",
-    "allow": [
-      "Bash(fd *)",
-      "Bash(fzf *)",
-      "Bash(rg *)",
-      "Bash(ast-grep *)",
-      "Bash(jq *)"
-    ],
-    "ask": ["Bash(rm *)"]
-  },
-  "autoUpdatesChannel": "latest",
-  "showThinkingSummaries": true,
-  "showClearContextOnPlanAccept": true,
-  "effortLevel": "high",
-  "skipDangerousModePermissionPrompt": true,
   "cleanupPeriodDays": 9999,
   "env": {
     "ENABLE_TOOL_SEARCH": "true",
@@ -24,11 +8,29 @@
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-4-6[1m]",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-6[1m]"
   },
-  "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true
+  "permissions": {
+    "allow": [
+      "Bash(fd *)",
+      "Bash(fzf *)",
+      "Bash(rg *)",
+      "Bash(ast-grep *)",
+      "Bash(jq *)"
+    ],
+    "ask": [
+      "Bash(rm *)"
+    ],
+    "defaultMode": "acceptEdits"
   },
   "statusLine": {
     "type": "command",
     "command": "$HOME/.claude/statusline-command.sh"
-  }
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "showClearContextOnPlanAccept": true,
+  "autoUpdatesChannel": "latest",
+  "showThinkingSummaries": true,
+  "skipDangerousModePermissionPrompt": true
 }

@@ -18,10 +18,6 @@ export PATH="$HOME/.local/bin:$HOME/.bin:$PATH"
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# asdf
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
-
 # homebrew
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_ANALYTICS=1
@@ -46,6 +42,10 @@ elif [[ "$OS" == "macos" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
   [[ -f "$HOME/.orbstack/shell/init.zsh" ]] && source "$HOME/.orbstack/shell/init.zsh"
 fi
+
+# asdf (after homebrew so shims take precedence over brew-installed runtimes)
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 # fzf
 source <(fzf --zsh)
