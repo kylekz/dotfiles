@@ -18,6 +18,14 @@ export PATH="$HOME/.local/bin:$HOME/.bin:$PATH"
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# pnpm
+if [[ "$OS" == "macos" ]]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+else
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
+export PATH="$PNPM_HOME:$PATH"
+
 # homebrew
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_ANALYTICS=1
