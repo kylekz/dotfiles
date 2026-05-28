@@ -24,29 +24,19 @@ The following tools are installed and available to you:
   - `pnpm-lock.yaml` - use pnpm
   - `package-lock.json` - use npm
 - When dealing with npm package versions, use the package manager to find the latest: `[bun pm|pnpm|npm] view <package> version`
-- Never compromise type safety: No any, no non-null assertion operator (!), no type assertions (as Type) — prefer `satisfies` for type validation
+- Never compromise type safety: No `any`, no non-null assertion operator (!), no type assertions (`as Type`) — prefer `satisfies` for type validation
 - Make illegal states unrepresentable: Model domain with ADTs/discriminated unions; parse inputs at boundaries into typed structures; if state can't exist, code can't mishandle it
 - Use the LSP tool instead of assuming what properties exist
 - When writing comments, do not include JSDoc. TypeScript already defines the types, we only need the comment.
 
 ## Code Quality
 
-Avoid AI generated slop such as:
-
-- Extra defensive checks or try/catch blocks that are abnormal for that area of the codebase (especially if called by trusted / validated codepaths)
-- Variables or functions that are only used a single time right after declaration, prefer inlining the rhs/function.
-- Redundant checks/casts inside a function that the caller also already takes care of.
-- Any other style that is inconsistent with the file, including using types when the file doesn't.
+- Avoid extra defensive checks or try/catch blocks that are abnormal for that area of the codebase (especially if called by trusted / validated codepaths)
+- Avoid variables or functions that are only used a single time right after declaration, prefer inlining the rhs/function.
+- Avoid redundant checks/casts inside a function that the caller also already takes care of.
+- Mirror existing patterns and code style.
+- Keep comments to one to two lines, unless it *really* needs the extra explanation. Code should be self-documenting.
+- Make no consideration of backward compatibility or flexibility unless otherwise asked.
 
 This codebase will outlive you. Every shortcut becomes someone else's burden. Every hack compounds into technical debt that slows the whole team down.
 The patterns you establish will be copied. The corners you cut will be cut again. Leave the codebase better than you found it.
-
-Avoid slop comments such as:
-
-- Comments that repeat what code codes
-- Commented out code (delete it)
-- Obvious comments ("increment counter")
-- Comments instead of good naming
-- Comments about updates to old code ("<- now supports xyz")
-
-Code should be self-documenting. If you need a comment to explain WHAT the code does, consider refactoring to make it clearer.
