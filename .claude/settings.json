@@ -17,7 +17,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "fable-5",
+  "model": "fable",
   "statusLine": {
     "type": "command",
     "command": "$HOME/.claude/statusline-command.sh"
